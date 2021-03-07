@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+
+<head>
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Exploring Canadian Income by Geography, Sex, and Age</h1>
+
+    &nbsp;
+
+    <p>The interactive charts on this page let you slice and dice Canadian income data -- by geography, sex, and age group -- answering questions such as:</p>
+
+    <ul>
+        <li>What's the average income in Toronto? How does this compare for men vs women?</li>
+        <li>How many people in Vancouver are making more than $100,000 per year?</li>
+        <li>Which major Canadian city has the highest (and lowest) average incomes?</li>
+        <li>Who's better off -- women in Montreal, or women in Calgary?</li>
+    </ul>
+
+    <p class="note">Note: all data is sourced from StatsCan, and is based on ~28 million tax returns submitted for the 2018 tax year. At the bottom of the page, you can find the data sources and a downloadable spreadsheet for further perusal.</p>
+
+    &nbsp;
+
+    <h2>Exploring Geographical Regions -- by Age Group & Sex</h2>
+
+    <table id="inputTable1">
+        <tr>
+            <th>Geography</th>
+            <th>Output</th>    
+        </tr>
+        <tr>
+            <td>
+                <select name="singleRegionMenu" class="userInput selectMenu" id="singleRegionInput">
+                    <option value="Canada" selected="selected">Canada</option>
+                    <option value="St. John's, NL">St. John's, NL</option>
+                    <option value="Charlottetown, PEI">Charlottetown, PEI</option>
+                    <option value="Halifax, NS">Halifax, NS</option>
+                    <option value="Moncton, NB">Moncton, NB</option>
+                    <option value="Québec, QC">Québec, QC</option>
+                    <option value="Montréal, QC">Montréal, QC</option>
+                    <option value="Ottawa-Gatineau, ON">Ottawa-Gatineau, ON</option>
+                    <option value="Toronto, ON">Toronto, ON</option>
+                    <option value="Winnipeg, MB">Winnipeg, MB</option>
+                    <option value="Regina, SK">Regina, SK</option>
+                    <option value="Saskatoon, SK">Saskatoon, SK</option>
+                    <option value="Calgary, AB">Calgary, AB</option>
+                    <option value="Edmonton, AB">Edmonton, AB</option>
+                    <option value="Vancouver, BC">Vancouver, BC</option>
+                    <option value="Victoria, BC">Victoria, BC</option>
+                    <option value="Yukon">Yukon</option>
+                    <option value="Northwest Territories">Northwest Territories</option>
+                    <option value="Nunavut">Nunavut</option>
+                </select>
+            </td>
+
+            <td>
+                <div class="radioContainer">
+                    <ul>
+                        <li>
+                            <input class="userInput" type="radio" id="radioOption1" name="radio1" value="averageIncome" checked="checked"><label for="radioOption1">Average Income</label><div class="check"></div>
+                        </li>
+                        
+                        <li>
+                            <input class="userInput" type="radio" id="radioOption2" name="radio1" value="percent50"><label for="radioOption2">% of People Making $50K+</label><div class="check"><div class="inside"></div></div>
+                        </li>
+                        
+                        <li>
+                            <input class="userInput" type="radio" id="radioOption3" name="radio1" value="percent75"><label for="radioOption3">% of People Making $75K+</label><div class="check"><div class="inside"></div></div>
+                        </li>
+            
+                        <li>
+                            <input class="userInput" type="radio" id="radioOption4" name="radio1" value="percent100"><label for="radioOption4">% of People Making $100K+</label><div class="check"><div class="inside"></div></div>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+        
+    </table>
+
+    <div class="chartDivWrapper" id="singleRegionIncomeChartDiv">
+        <canvas id="singleRegionIncomeChart"></canvas>
+    </div>
+
+    <div class="chartDivWrapper" id="singleRegionAbove50ChartDiv">
+        <canvas id="singleRegionAbove50Chart"></canvas>
+    </div>
+
+    <div class="chartDivWrapper" id="singleRegionAbove75ChartDiv">
+        <canvas id="singleRegionAbove75Chart"></canvas>
+    </div>
+
+    <div class="chartDivWrapper" id="singleRegionAbove100ChartDiv">
+        <canvas id="singleRegionAbove100Chart"></canvas>
+    </div>
+
+    <div id="analysis1TextOutput"></div>
+
+    <p class="note">Tip: try clicking the legend labels on the chart to hide / show data sets. For example -- if you hide the data for "Both Sexes" and "Males", this lets you focus on incomes for Females only.</p>
+
+    &nbsp;
+
+    <h2>Exploring Age Groups -- by Geography & Sex</h2>
+
+    <table id="inputTable2">
+        <tr>
+            <th>Age Group</th>
+            <th>Output</th>
+        </tr>
+
+        <tr>
+
+            <td>
+                <select name="singleAgeGroup" class="userInput selectMenu" id="singleAgeGroupInput">
+                    <option value="All age groups">All age groups</option>
+                    <option value="0 to 24 years">0 to 24 years</option>
+                    <option value="25 to 34 years" selected="selected">25 to 34 years</option>
+                    <option value="35 to 44 years">35 to 44 years</option>
+                    <option value="45 to 54 years">45 to 54 years</option>
+                    <option value="55 to 64 years">55 to 64 years</option>
+                    <option value="65 years and over">65 years and over</option>
+                </select>
+            </td>
+
+            <td>
+                <div class="radioContainer">
+                    <ul>
+                        <li>
+                            <input class="userInput" type="radio" id="radioOption5" name="radio2" value="averageIncome" checked="checked"><label for="radioOption5">Average Income</label><div class="check"></div>
+                        </li>
+                        
+                        <li>
+                            <input class="userInput" type="radio" id="radioOption6" name="radio2" value="percent50"><label for="radioOption6">% of People Making $50K+</label><div class="check"><div class="inside"></div></div>
+                        </li>
+                        
+                        <li>
+                            <input class="userInput" type="radio" id="radioOption7" name="radio2" value="percent75"><label for="radioOption7">% of People Making $75K+</label><div class="check"><div class="inside"></div></div>
+                        </li>
+            
+                        <li>
+                            <input class="userInput" type="radio" id="radioOption8" name="radio2" value="percent100"><label for="radioOption8">% of People Making $100K+</label><div class="check"><div class="inside"></div></div>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+
+        </tr>
+    </table>
+
+    <div class="chartDivWrapper" id="singleAgeGroupIncomeChartDiv">
+        <canvas id="singleAgeGroupIncomeChart"></canvas>
+    </div>
+
+    <div class="chartDivWrapper" id="singleAgeGroupAbove50ChartDiv">
+        <canvas id="singleAgeGroupAbove50Chart"></canvas>
+    </div>
+
+    <div class="chartDivWrapper" id="singleAgeGroupAbove75ChartDiv">
+        <canvas id="singleAgeGroupAbove75Chart"></canvas>
+    </div>
+
+    <div class="chartDivWrapper" id="singleAgeGroupAbove100ChartDiv">
+        <canvas id="singleAgeGroupAbove100Chart"></canvas>
+    </div>
+
+    &nbsp;
+
+    <h2>Head-to-Head Comparison</h2>
+
+    <table id="inputTable3">
+        <tr>
+            <th></th>
+            <th class="groupATextColour">Group A</th>
+            <th class="groupBTextColour">Group B</th>
+        </tr>
+        <tr>
+            <td>Geography</td>
+            <td>
+                <select name="geoA" class="userInput selectMenu menuA" id="geoAInput">
+                    <option value="Canada" selected="selected">Canada</option>
+                    <option value="St. John's, NL">St. John's, NL</option>
+                    <option value="Charlottetown, PEI">Charlottetown, PEI</option>
+                    <option value="Halifax, NS">Halifax, NS</option>
+                    <option value="Moncton, NB">Moncton, NB</option>
+                    <option value="Québec, QC">Québec, QC</option>
+                    <option value="Montréal, QC">Montréal, QC</option>
+                    <option value="Ottawa-Gatineau, ON">Ottawa-Gatineau, ON</option>
+                    <option value="Toronto, ON">Toronto, ON</option>
+                    <option value="Winnipeg, MB">Winnipeg, MB</option>
+                    <option value="Regina, SK">Regina, SK</option>
+                    <option value="Saskatoon, SK">Saskatoon, SK</option>
+                    <option value="Calgary, AB">Calgary, AB</option>
+                    <option value="Edmonton, AB">Edmonton, AB</option>
+                    <option value="Vancouver, BC">Vancouver, BC</option>
+                    <option value="Victoria, BC">Victoria, BC</option>
+                    <option value="Yukon">Yukon</option>
+                    <option value="Northwest Territories">Northwest Territories</option>
+                    <option value="Nunavut">Nunavut</option>
+                </select>
+            </td>
+            <td>
+                <select name="geoB" class="userInput selectMenu menuB" id="geoBInput">
+                    <option value="Canada">Canada</option>
+                    <option value="St. John's, NL">St. John's, NL</option>
+                    <option value="Charlottetown, PEI">Charlottetown, PEI</option>
+                    <option value="Halifax, NS">Halifax, NS</option>
+                    <option value="Moncton, NB">Moncton, NB</option>
+                    <option value="Québec, QC">Québec, QC</option>
+                    <option value="Montréal, QC">Montréal, QC</option>
+                    <option value="Ottawa-Gatineau, ON">Ottawa-Gatineau, ON</option>
+                    <option value="Toronto, ON">Toronto, ON</option>
+                    <option value="Winnipeg, MB">Winnipeg, MB</option>
+                    <option value="Regina, SK">Regina, SK</option>
+                    <option value="Saskatoon, SK">Saskatoon, SK</option>
+                    <option value="Calgary, AB">Calgary, AB</option>
+                    <option value="Edmonton, AB">Edmonton, AB</option>
+                    <option value="Vancouver, BC" selected="selected">Vancouver, BC</option>
+                    <option value="Victoria, BC">Victoria, BC</option>
+                    <option value="Yukon">Yukon</option>
+                    <option value="Northwest Territories">Northwest Territories</option>
+                    <option value="Nunavut">Nunavut</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Sex</td>
+            <td>
+                <select name="sexA" class="userInput selectMenu menuA" id="sexAInput">
+                    <option value="Both sexes" selected="selected">Both sexes</option>
+                    <option value="Males">Males</option>
+                    <option value="Females">Females</option>
+                </select>
+            </td>
+            <td>
+                <select name="sexB" class="userInput selectMenu menuB" id="sexBInput">
+                    <option value="Both sexes">Both sexes</option>
+                    <option value="Males">Males</option>
+                    <option value="Females" selected="selected">Females</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Age Group</td>
+            <td>
+                <select name="ageA" class="userInput selectMenu menuA" id="ageAInput">
+                    <option value="All age groups" selected="selected">All age groups</option>
+                    <option value="0 to 24 years">0 to 24 years</option>
+                    <option value="25 to 34 years">25 to 34 years</option>
+                    <option value="35 to 44 years">35 to 44 years</option>
+                    <option value="45 to 54 years">45 to 54 years</option>
+                    <option value="55 to 64 years">55 to 64 years</option>
+                    <option value="65 years and over">65 years and over</option>
+                </select>
+            </td>
+
+            <td>
+                <select name="ageB" class="userInput selectMenu menuB" id="ageBInput">
+                    <option value="All age groups">All age groups</option>
+                    <option value="0 to 24 years">0 to 24 years</option>
+                    <option value="25 to 34 years" selected="selected">25 to 34 years</option>
+                    <option value="35 to 44 years">35 to 44 years</option>
+                    <option value="45 to 54 years">45 to 54 years</option>
+                    <option value="55 to 64 years">55 to 64 years</option>
+                    <option value="65 years and over">65 years and over</option>
+                </select>
+            </td>
+
+        </tr>
+
+    </table>
+
+    <table id="outputTable3">
+        <tr>
+            <th></th>
+            <th id="titleCellA"></th>
+            <th id="titleCellB"></th>
+            <th>Delta</th>
+        </tr>
+
+        <tr>
+            <td class="boldTableCell">Average Income</td>
+            <td id="averageIncomeCellA" class="boldTableCell groupATextColour"></td>
+            <td id="averageIncomeCellB" class="boldTableCell groupBTextColour"></td>
+            <td id="deltaCell"></td>
+        </tr>
+
+        <tr>
+            <td>Count</td>
+            <td id="countCellA"></td>
+            <td id="countCellB"></td>
+            <td></td>
+        </tr>
+
+
+    </table>
+
+    <div class="chartDivWrapper" id="distributionChartDiv">
+        <canvas id="distributionChart"></canvas>
+    </div>
+
+
+    &nbsp;
+
+    <h2>A Few Findings & Curiosities</h2>
+
+    <p>Here are some of my take-aways / insights after poking and prodding the data:</p>
+
+    <ul>
+        <li>Canadians reach their peak income in the 45-54 year old age range. Average income is $66,968, versus $45,953 in the 25-34 age group</li>
+        <li>Over 20% of men are earning $100,000+ in Ottawa, Calgary, and Edmonton. "Only" 15% of men in Toronto and Vancouver are exceeding the $100,000 threshold</li>
+        <li>In comparison with the point above, there isn't any place where 20% of women are earning $100,000+. Only 10% of women in Ottawa and Calgary are exceeding that threshold</li>
+        <li>Nunavut is the only place in Canada where women are out-earning men; in the 25 to 34 year old age group, women earn an average of $51,159 per year, compared to $48,493 for men</li>
+        <li>Calgary is home to the largest share of high-income earners -- 2.4% of Calgarians are earning $250,000+, versus 1% for Canadians as a whole</li>
+    </ul>
+
+    <p>If you come across any surprising facts and figures as you sift through the data, let me know in the comments below!</p>
+
+    &nbsp;
+
+    <h2>Final Thoughts & Data</h2>
+
+    <p>All of the data in this post can be <a href="https://drive.google.com/drive/u/0/folders/1n8_2B_MLIbkKGVXsppzsr7w6YSnWxTFk" rel="noopener" target="_blank">downloaded in spreadsheet form here</a>.</p>
+
+    <p>Data sources:</p>
+    <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110005101" rel="noopener" target="_blank">Statistics Canada. Table 11-10-0051-01  Tax filers and dependants with income by total income, income taxes paid and after-tax income, sex and age</a></a></p>
+    <p><a href="https://www150.statcan.gc.ca/t1/tbl1/en/cv.action?pid=1110000801" rel="noopener" target="_blank">Statistics Canada. Table 11-10-0008-01  Tax filers and dependants with income by total income, sex and age</a></a></p>
+
+    &nbsp;
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+    <script src="canadianIncomeDashboardScript.js"></script>
+
+</body>
+
+</html>

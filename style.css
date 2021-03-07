@@ -1,0 +1,540 @@
+html {
+    font-family:helvetica;
+    font-size:15px;
+    margin:auto;
+}
+
+table {
+    border-collapse: collapse;
+    margin:auto;
+    font-size:0.9em;
+    max-width:90%;
+    width:500px;
+}
+
+.hide{
+    display:none;
+}
+
+
+#analysis1TextOutput{
+    text-align:left;
+    width:90%;
+    max-width:600px;
+    padding: 10px;
+    margin: auto;
+}
+
+#analysis1TextOutput ul li {
+    padding: 5px 0px;
+}
+
+.note {
+  font-style: italic;
+}
+
+mark {
+    background: linear-gradient(-100deg, hsla(48,92%,75%,.3), hsla(48,92%,75%,.7) 95%, hsla(48,92%,75%,.1));
+    border-radius: 1em 0;
+    padding: .35rem;
+    font-weight:bold;
+    font-size:1.1em;
+}
+
+.bothSexesTextHighlight{
+    font-weight:bold;
+    font-size:1.1em;
+    border-radius: 0.4em;
+    border: 2px solid #BBBBBB;
+    background: #f7f7f7;
+    padding: .2rem;
+}
+
+.malesTextHighlight{
+    font-weight:bold;
+    font-size:1.1em;
+    border-radius: 0.4em;
+    border: 2px solid #00C4A9;
+    background: #f1fffd;
+    padding: .2rem;
+}
+
+.femalesTextHighlight{
+    font-weight:bold;
+    font-size:1.1em;
+    border-radius: 0.4em;
+    border: 2px solid #8502F6;
+    background: #faf5ff;
+    padding: .2rem;
+}
+
+#inputTable3{
+  margin-bottom:15px;
+}
+
+#inputTable3, #outputTable3{
+    text-align: center;
+}
+
+#inputTable3 th, #outputTable3 th{
+    font-size: 1.2em;
+}
+
+#inputTable1 th, #inputTable2 th {
+    font-weight: bold;
+    font-size: 1.15em;
+}
+
+#inputTable1 td, #inputTable2 td{
+    border: 1px solid #b6b6b6;
+}
+
+th {
+    border: 2px solid white;
+    padding: 5px;
+    text-align: center;
+    vertical-align:middle;
+	border-collapse: collapse;
+	background-color: #e9e9e9;
+}
+
+
+#assetDescriptionTable {
+    color: black;
+}
+
+td {
+    border: 1px solid #e9e9e9;
+    padding: 8px 5px 8px 5px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: white;
+    border-collapse: collapse;  
+}
+
+.boldTableCell {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#deltaCell{
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+
+.selectMenu {
+	font-weight: bold;
+	padding: 4px 8px 4px 8px;
+	border-radius: 4px;
+    margin-bottom: 3px;
+    display:block;
+    text-align:center;
+    margin:auto;
+    width:90%;	
+}
+
+#singleRegionInput {
+    border: 2px solid #FFC300;
+    background-color: #FFFDFB;
+}
+
+#singleRegionInput:focus {
+    border:2px solid #FFC300;
+    outline: none;
+}
+
+#singleAgeGroupInput {
+    border: 2px solid #ee29ac;
+    background-color: #fffeff;
+}
+
+#singleAgeGroupInput:focus {
+    border:2px solid #ee29ac;
+    outline: none;
+}
+
+.groupATextColour {
+    color:#148fae;
+}
+
+.groupBTextColour {
+    color:#FF5733;
+}
+
+
+.menuA{
+    border:2px solid #148fae;
+}
+
+.menuB{
+    border:2px solid #FF5733;
+}
+
+.menuA:focus {
+    border:2px solid #148fae;
+    outline: none;
+}
+
+.menuB:focus {
+    border:2px solid #FF5733;
+    outline: none;
+}
+
+/* conditional for screen size minimum of 700px */
+@media (min-width:700px) {
+  /* your conditional / responsive CSS inside this condition */
+
+  #singleRegionInput {
+    font-size:1.1em;
+  }
+
+  #singleAgeGroupInput {
+    font-size:1.1em;
+  }
+
+}
+
+.chartDivWrapper {
+    width:95%;
+    max-width:1200px;
+    padding:6px;
+    border: 2px solid rgb(0, 30, 87);
+    background-color: white;
+    position:relative;
+    height:50vh;
+	max-height: 550px;
+    margin: auto;
+	text-align: center;
+    margin-top:15px;
+    margin-bottom:15px;
+    box-shadow: 4px 4px 10px grey;
+}
+
+#singleRegionIncomeChartDiv, #singleAgeGroupIncomeChartDiv{
+    border: 3px solid rgb(102,159,168) !important;
+}
+
+#singleRegionAbove50ChartDiv, #singleAgeGroupAbove50ChartDiv{
+    border: 3px solid rgb(0,102,164) !important;
+}
+
+#singleRegionAbove75ChartDiv, #singleAgeGroupAbove75ChartDiv{
+    border: 3px solid rgb(68,200,255) !important;
+}
+
+#singleRegionAbove100ChartDiv, #singleAgeGroupAbove100ChartDiv{
+    border: 3px solid rgb(115,162,218) !important;
+}
+
+/* Styling for radio button */
+
+.radioContainer{
+    display: block;
+    position: relative;
+    margin: auto;
+    max-width: 250px;
+}
+
+.radioContainer p{
+  line-height:0;
+  margin:0;
+  padding:0;
+  font-size:0;
+}
+  
+  
+  .radioContainer ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    line-height: normal;
+  }
+  
+  .radioContainer ul li{
+    display: block;
+    position: relative;
+    float: left;
+    border-bottom: 1px solid #333;
+    width:250px;
+    line-height: normal;
+    padding:0;
+    margin:0;
+  }
+  
+  .radioContainer ul li input[type=radio]{
+    position: absolute;
+    visibility: hidden;
+  }
+  
+  .radioContainer ul li label{
+    display: block;
+    position: relative;
+    font-size: 1em;
+    padding: 7px 8px 8px 35px;
+    margin: 7px 0px 8px 0px;
+    height: 7px;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+    text-align: left;
+    line-height: 1em;
+  }
+  
+  .radioContainer ul li:hover label{
+      color: #3a3a3a;
+  }
+  
+  .radioContainer ul li .check{
+    display: block;
+    position: absolute;
+    border: 3px solid #AAAAAA;
+    border-radius: 100%;
+    height: 17px;
+    width: 17px;
+    top: 7px;
+    left: 8px;
+      z-index: 5;
+      transition: border .25s linear;
+      -webkit-transition: border .25s linear;
+  }
+  
+
+  .radioContainer ul li .check::before {
+    display: block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 13px;
+    width: 13px;
+    top: 2px;
+    left: 2px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+  }
+  
+  input[type=radio]:checked ~ .check {
+    border: 3px solid #204e83;
+  }
+  
+  input[type=radio]:checked ~ .check::before{
+    background: #204e83;
+  }
+  
+  input[type=radio]:checked ~ label{
+    color: #204e83;
+  }
+
+  #radioOption1:checked ~ .check {
+    border: 3px solid rgb(102,159,168) !important;
+  }
+  
+  #radioOption1:checked ~ .check::before{
+    background: rgb(102,159,168) !important;
+  }
+  
+  #radioOption1:checked ~ label{
+    color: rgb(102,159,168) !important;
+  }
+
+
+  #radioOption2:checked ~ .check {
+    border: 3px solid rgb(0,102,164) !important;
+  }
+  
+  #radioOption2:checked ~ .check::before{
+    background: rgb(0,102,164) !important;
+  }
+  
+  #radioOption2:checked ~ label{
+    color: rgb(0,102,164) !important;
+  }
+
+
+  #radioOption3:checked ~ .check {
+    border: 3px solid rgb(68,200,255) !important;
+  }
+  
+  #radioOption3:checked ~ .check::before{
+    background: rgb(68,200,255) !important;
+  }
+  
+  #radioOption3:checked ~ label{
+    color: rgb(68,200,255) !important;
+  }
+
+
+  #radioOption4:checked ~ .check {
+    border: 3px solid rgb(115,162,218) !important;
+  }
+  
+  #radioOption4:checked ~ .check::before{
+    background: rgb(115,162,218) !important;
+  }
+  
+  #radioOption4:checked ~ label{
+    color: rgb(115,162,218) !important;
+  }
+
+
+  #radioOption5:checked ~ .check {
+    border: 3px solid rgb(102,159,168) !important;
+  }
+  
+  #radioOption5:checked ~ .check::before{
+    background: rgb(102,159,168) !important;
+  }
+  
+  #radioOption5:checked ~ label{
+    color: rgb(102,159,168) !important;
+  }
+
+
+  #radioOption6:checked ~ .check {
+    border: 3px solid rgb(0,102,164) !important;
+  }
+  
+  #radioOption6:checked ~ .check::before{
+    background: rgb(0,102,164) !important;
+  }
+  
+  #radioOption6:checked ~ label{
+    color: rgb(0,102,164) !important;
+  }
+
+
+  #radioOption7:checked ~ .check {
+    border: 3px solid rgb(68,200,255) !important;
+  }
+  
+  #radioOption7:checked ~ .check::before{
+    background: rgb(68,200,255) !important;
+  }
+  
+  #radioOption7:checked ~ label{
+    color: rgb(68,200,255) !important;
+  }
+
+
+  #radioOption8:checked ~ .check {
+    border: 3px solid rgb(115,162,218) !important;
+  }
+  
+  #radioOption8:checked ~ .check::before{
+    background: rgb(115,162,218) !important;
+  }
+  
+  #radioOption8:checked ~ label{
+    color: rgb(115,162,218) !important;
+  }
+  
+
+
+
+#periodicTableNotes, #correlationTableNotes{
+    font-style: italic;
+    font-size: 0.85em;
+}
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(194, 194, 194);
+    opacity: 1; /* Firefox */
+    font-weight: normal;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgb(194, 194, 194);
+    font-weight: normal;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgb(194, 194, 194);
+    font-weight: normal;
+}
+
+input.input-number–noSpinners {
+    -moz-appearance: textfield;
+    border:1px solid rgb(180, 180, 180);
+    padding: 4px 0 4px 0;
+}
+
+input.input-number–noSpinners::-webkit-inner-spin-button,
+input.input-number–noSpinners::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    border:1px solid rgb(180, 180, 180);
+    padding: 4px 0 4px 0;
+}
+
+input:hover{
+    background-color: rgb(246, 252, 255);
+    border:1px solid rgb(146, 146, 146);
+}
+
+.fadeColour{
+    -webkit-filter: opacity(.35);
+    filter: opacity(.35);
+}
+
+.assetDescriptionCell{
+    -webkit-filter: opacity(.75);
+    filter: opacity(.75);
+    font-weight:bold;
+}
+
+
+
+.select-style {
+    border-bottom: 2px solid rgb(0, 183, 255);
+    border-left:none;
+    border-top:none;
+    border-right:none;
+    border-radius:0;
+    overflow: hidden;
+    font-weight:bold;
+    padding:1px;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    text-align:center;
+    font-family: Helvetica, sans-serif;
+    font-size:0.95em;
+    outline: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+::-webkit-scrollbar:vertical {
+    width: 12px;
+}
+
+::-webkit-scrollbar:horizontal {
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;  
+    background-color: #ffffff; 
+}
+
+.selectionLabel{
+    padding-right: 8px;
+}
+
